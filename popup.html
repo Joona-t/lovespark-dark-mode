@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="popup.css">
+  <title>LoveSpark Dark Mode</title>
+</head>
+<body>
+
+  <header class="header">
+    <img src="icons/icon-48.png" alt="" class="logo" width="28" height="28">
+    <div class="header-text">
+      <span class="title">LoveSpark</span>
+      <span class="subtitle">DARK MODE</span>
+    </div>
+  </header>
+
+  <!-- Stats -->
+  <div class="stats-card">
+    <div class="stats-row">
+      <span class="stats-icon" aria-hidden="true">🌑</span>
+      <span class="stats-label">Sites Themed</span>
+      <span class="stats-value" id="val-sitesDarkened">0</span>
+    </div>
+    <div class="stats-row">
+      <span class="stats-icon" aria-hidden="true">👁️</span>
+      <span class="stats-label">Eye Strain Saved</span>
+      <span class="stats-value" id="val-minutesSaved">0</span>
+    </div>
+  </div>
+
+  <!-- Mode pills -->
+  <div class="modes" role="radiogroup" aria-label="Theme mode">
+    <button class="mode-pill" data-mode="dark" aria-pressed="false">
+      <span class="mode-icon" aria-hidden="true">🌑</span>
+      <div class="mode-text">
+        <span class="mode-name">Dark</span>
+        <span class="mode-desc">inverted for comfort</span>
+      </div>
+      <span class="mode-check" aria-hidden="true">✦</span>
+    </button>
+    <button class="mode-pill" data-mode="bubblegum" aria-pressed="false">
+      <span class="mode-icon" aria-hidden="true">🌸</span>
+      <div class="mode-text">
+        <span class="mode-name">Bubblegum</span>
+        <span class="mode-desc">soft blush tones</span>
+      </div>
+      <span class="mode-check" aria-hidden="true">✦</span>
+    </button>
+    <button class="mode-pill" data-mode="hotpink" aria-pressed="false">
+      <span class="mode-icon" aria-hidden="true">💖</span>
+      <div class="mode-text">
+        <span class="mode-name">Hot Pink</span>
+        <span class="mode-desc">bold bubblegum</span>
+      </div>
+      <span class="mode-check" aria-hidden="true">✦</span>
+    </button>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Toggle row -->
+  <div class="toggle-row">
+    <label class="toggle-wrap" aria-label="Enable or disable LoveSpark Dark Mode">
+      <input type="checkbox" id="toggle-enabled" checked>
+      <span class="toggle-track">
+        <span class="toggle-thumb"></span>
+      </span>
+    </label>
+    <p class="status-text" id="status-text">theming the internet</p>
+  </div>
+
+  <!-- Disable on site -->
+  <button class="site-toggle" id="site-toggle">Disable on this site</button>
+
+  <!-- Footer with settings + mascot -->
+  <div class="footer-row">
+    <a href="#" id="open-settings" class="settings-link">⚙ Settings</a>
+    <span class="footer-text">LoveSpark Suite 💕</span>
+    <img src="icons/mascot.png" alt="" class="mascot" data-lovespark="mascot">
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

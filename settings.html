@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="settings.css">
+  <title>LoveSpark Dark Mode Settings</title>
+</head>
+<body>
+  <div class="settings-container">
+    <header class="settings-header">
+      <img src="icons/icon-48.png" alt="LoveSpark Dark Mode" class="logo">
+      <div class="title-block">
+        <span class="title">⚙ Settings</span>
+        <span class="subtitle">LOVESPARK DARK MODE</span>
+      </div>
+    </header>
+
+    <main class="settings-content">
+
+      <!-- Theme mode -->
+      <div class="settings-card">
+        <h2 class="card-title">Theme Mode</h2>
+        <div class="card-content">
+          <div class="mode-select">
+            <button class="mode-btn" data-mode="dark">🌑 Dark</button>
+            <button class="mode-btn" data-mode="bubblegum">🌸 Bubblegum</button>
+            <button class="mode-btn" data-mode="hotpink">💖 Hot Pink</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Enable toggle -->
+      <div class="settings-card">
+        <h2 class="card-title">Enable</h2>
+        <div class="card-content">
+          <label class="toggle-wrap">
+            <input type="checkbox" id="toggle-enabled" checked>
+            <span class="toggle-track"><span class="toggle-thumb"></span></span>
+            <span class="toggle-label" id="toggle-label">Enabled</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Excluded Sites -->
+      <div class="settings-card">
+        <h2 class="card-title">Excluded Sites</h2>
+        <div class="card-content">
+          <div class="domain-input-row">
+            <input type="text" class="domain-input" placeholder="example.com" id="domain-add-excludedDomains">
+            <button class="btn-pink domain-add-btn" data-key="excludedDomains">Add</button>
+          </div>
+          <ul class="domain-list" id="list-excludedDomains"></ul>
+        </div>
+      </div>
+
+      <!-- Stats -->
+      <div class="settings-card">
+        <h2 class="card-title">Stats</h2>
+        <div class="card-content">
+          <div class="stats-grid" id="stats-grid"></div>
+        </div>
+      </div>
+
+      <!-- Reset -->
+      <div class="settings-card">
+        <h2 class="card-title">Reset Data</h2>
+        <div class="card-content">
+          <p class="reset-desc">Reset all statistics and settings to defaults.</p>
+          <button class="btn-danger" id="reset-btn">Reset All Data</button>
+        </div>
+      </div>
+
+    </main>
+
+    <footer class="settings-footer">
+      <span class="footer-text">LoveSpark Suite 💕</span>
+    </footer>
+  </div>
+  <script src="settings.js"></script>
+</body>
+</html>

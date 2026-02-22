@@ -1,0 +1,95 @@
+/*
+  LoveSpark Dark Mode — base-filter.css  (Layer 1)
+  CSS filter applied to <html> per mode. GPU-accelerated.
+  Class on <html> selects the active mode.
+*/
+
+/* ════════════════════════════════════════════════════════════════════════════
+   MODE 1 — DARK  🌑  Inverted Comfort
+   Full invert for true dark mode on any site.
+════════════════════════════════════════════════════════════════════════════ */
+
+html.lovespark-dark {
+  filter: invert(0.9) hue-rotate(180deg);
+  background: #111 !important;
+}
+
+/* Counter-filter: re-invert media so images/videos look natural */
+html.lovespark-dark img,
+html.lovespark-dark video,
+html.lovespark-dark canvas,
+html.lovespark-dark svg,
+html.lovespark-dark picture,
+html.lovespark-dark picture img,
+html.lovespark-dark [style*="background-image"],
+html.lovespark-dark iframe {
+  filter: invert(1) hue-rotate(180deg) !important;
+}
+
+/* ════════════════════════════════════════════════════════════════════════════
+   MODE 2 — BUBBLEGUM  🌸  Soft Blush
+   Warm, gentle, rose-garden reading light.
+   (Uses Reader's proven Sakura filter values)
+════════════════════════════════════════════════════════════════════════════ */
+
+html.lovespark-bubblegum {
+  filter: sepia(15%) saturate(120%) hue-rotate(330deg) brightness(100%);
+}
+
+/* Counter: hue inverse of 330° = 30°. Saturation /1.20 ≈ 83%. */
+html.lovespark-bubblegum img,
+html.lovespark-bubblegum video,
+html.lovespark-bubblegum canvas,
+html.lovespark-bubblegum picture img,
+html.lovespark-bubblegum [style*="background-image"] {
+  filter: hue-rotate(30deg) saturate(83%) !important;
+}
+
+/* ════════════════════════════════════════════════════════════════════════════
+   MODE 3 — HOT PINK  💖  Bold Bubblegum
+   Full LoveSpark energy. Unapologetically pink.
+   (Uses Reader's proven Hot Pink filter values)
+════════════════════════════════════════════════════════════════════════════ */
+
+html.lovespark-hotpink {
+  filter: sepia(25%) saturate(200%) hue-rotate(325deg) brightness(98%);
+}
+
+/* Counter: hue inverse of 325° = 35°. Saturation /2.00 = 50%. */
+html.lovespark-hotpink img,
+html.lovespark-hotpink video,
+html.lovespark-hotpink canvas,
+html.lovespark-hotpink picture img,
+html.lovespark-hotpink [style*="background-image"] {
+  filter: hue-rotate(35deg) saturate(50%) brightness(102%) !important;
+}
+
+/* ════════════════════════════════════════════════════════════════════════════
+   HARD EXCLUSIONS — never filter these regardless of mode
+════════════════════════════════════════════════════════════════════════════ */
+
+html.lovespark-dark      input[type="color"],
+html.lovespark-bubblegum input[type="color"],
+html.lovespark-hotpink   input[type="color"],
+html.lovespark-dark      iframe[src*="youtube.com"],
+html.lovespark-bubblegum iframe[src*="youtube.com"],
+html.lovespark-hotpink   iframe[src*="youtube.com"],
+html.lovespark-dark      iframe[src*="vimeo.com"],
+html.lovespark-bubblegum iframe[src*="vimeo.com"],
+html.lovespark-hotpink   iframe[src*="vimeo.com"] {
+  filter: none !important;
+  animation: none !important;
+}
+
+/* ════════════════════════════════════════════════════════════════════════════
+   REDUCED MOTION — respect user preference
+════════════════════════════════════════════════════════════════════════════ */
+
+@media (prefers-reduced-motion: reduce) {
+  html.lovespark-dark,
+  html.lovespark-bubblegum,
+  html.lovespark-hotpink {
+    transition: none !important;
+    animation: none !important;
+  }
+}

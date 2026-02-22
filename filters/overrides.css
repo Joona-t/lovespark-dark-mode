@@ -1,0 +1,75 @@
+/*
+  LoveSpark Dark Mode — overrides.css  (Layer 2, Generic)
+  Precision fixes the CSS filter alone can't handle.
+*/
+
+/* ── Code blocks: preserve syntax highlighting ──────────────────────────── */
+
+html.lovespark-dark      pre,
+html.lovespark-bubblegum pre,
+html.lovespark-hotpink   pre,
+html.lovespark-dark      code,
+html.lovespark-bubblegum code,
+html.lovespark-hotpink   code,
+html.lovespark-dark      .highlight,
+html.lovespark-bubblegum .highlight,
+html.lovespark-hotpink   .highlight,
+html.lovespark-dark      .CodeMirror,
+html.lovespark-bubblegum .CodeMirror,
+html.lovespark-hotpink   .CodeMirror,
+html.lovespark-dark      .monaco-editor,
+html.lovespark-bubblegum .monaco-editor,
+html.lovespark-hotpink   .monaco-editor,
+html.lovespark-dark      [class*="prism"],
+html.lovespark-bubblegum [class*="prism"],
+html.lovespark-hotpink   [class*="prism"],
+html.lovespark-dark      [class*="hljs"],
+html.lovespark-bubblegum [class*="hljs"],
+html.lovespark-hotpink   [class*="hljs"] {
+  filter: none !important;
+}
+
+/* ── Map embeds ─────────────────────────────────────────────────────────── */
+
+html.lovespark-dark      iframe[src*="google.com/maps"],
+html.lovespark-bubblegum iframe[src*="google.com/maps"],
+html.lovespark-hotpink   iframe[src*="google.com/maps"],
+html.lovespark-dark      iframe[src*="maps.google"],
+html.lovespark-bubblegum iframe[src*="maps.google"],
+html.lovespark-hotpink   iframe[src*="maps.google"] {
+  filter: none !important;
+}
+
+/* ── Scrollbars: tint them pink ─────────────────────────────────────────── */
+
+html.lovespark-bubblegum ::-webkit-scrollbar-thumb,
+html.lovespark-hotpink   ::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 105, 180, 0.45) !important;
+}
+
+html.lovespark-bubblegum ::-webkit-scrollbar-track,
+html.lovespark-hotpink   ::-webkit-scrollbar-track {
+  background-color: rgba(255, 200, 220, 0.1) !important;
+}
+
+/* Dark mode scrollbar: muted grey */
+html.lovespark-dark ::-webkit-scrollbar-thumb {
+  background-color: rgba(180, 180, 180, 0.4) !important;
+}
+
+html.lovespark-dark ::-webkit-scrollbar-track {
+  background-color: rgba(40, 40, 40, 0.3) !important;
+}
+
+/* ── Selection highlight ────────────────────────────────────────────────── */
+
+html.lovespark-bubblegum ::selection,
+html.lovespark-hotpink   ::selection {
+  background-color: rgba(255, 110, 180, 0.4) !important;
+  color: inherit !important;
+}
+
+html.lovespark-dark ::selection {
+  background-color: rgba(100, 140, 255, 0.4) !important;
+  color: inherit !important;
+}
