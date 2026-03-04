@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "LoveSpark Dark Mode",
+  "name": "__MSG_extName__",
   "version": "2.0.0",
-  "description": "Three beautiful themes for every website — dark mode, bubblegum pink, and hot pink",
+  "description": "__MSG_extDescription__",
   "permissions": [
     "storage",
     "tabs",
@@ -30,8 +30,12 @@
   },
   "web_accessible_resources": [
     {
-      "resources": ["filters/*.css"],
-      "matches": ["<all_urls>"]
+      "resources": [
+        "filters/*.css"
+      ],
+      "matches": [
+        "<all_urls>"
+      ]
     }
   ],
   "options_page": "settings.html",
@@ -40,5 +44,6 @@
       "id": "lovespark-dark-mode@lovespark.suite",
       "strict_min_version": "109.0"
     }
-  }
+  },
+  "default_locale": "en"
 }
