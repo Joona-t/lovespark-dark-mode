@@ -330,3 +330,13 @@ input[type="checkbox"]:checked + .toggle-track .toggle-thumb {
     transition: none !important;
   }
 }
+
+/* ── Theme Title Visibility ── */
+body.theme-beige .title,
+body.theme-beige .header-title {
+  color: #4a7c59;
+}
+body.theme-slate .title,
+body.theme-slate .header-title {
+  color: #d4714e;
+}
