@@ -165,3 +165,6 @@ document.getElementById('open-settings').addEventListener('click', (e) => {
     ? chrome.runtime.openOptionsPage()
     : chrome.tabs.create({ url: chrome.runtime.getURL('settings.html') });
 });
+
+/* ── Author / Ko-fi Footer ── */
+document.body.insertAdjacentHTML('beforeend', LoveSparkFooter.render());
