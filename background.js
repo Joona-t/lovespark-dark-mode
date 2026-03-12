@@ -99,7 +99,10 @@ async function checkDailyReset() {
 
 // ── Eye strain timer (chrome.alarms for MV3) ──────────────────────────────
 
-chrome.alarms.create('eyeStrainTick', { periodInMinutes: 5 });
+// Guard: only create alarm if it doesn't already exist (MV3 SW restarts)
+chrome.alarms.get('eyeStrainTick', (existing) => {
+  if (!existing) chrome.alarms.create('eyeStrainTick', { periodInMinutes: 5 });
+});
 
 chrome.alarms.onAlarm.addListener(async (alarm) => {
   if (alarm.name !== 'eyeStrainTick') return;

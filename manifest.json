@@ -39,6 +39,9 @@
     }
   ],
   "options_page": "settings.html",
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'; font-src 'self'"
+  },
   "browser_specific_settings": {
     "gecko": {
       "id": "lovespark-dark-mode@lovespark.suite",

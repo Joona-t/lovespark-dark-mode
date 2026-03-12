@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const addBtn = document.querySelector('[data-key="' + key + '"]');
 
   function renderDomains(domains) {
-    list.innerHTML = '';
+    list.replaceChildren();
     domains.forEach(d => {
       const li = document.createElement('li');
       li.className = 'domain-item';
@@ -103,12 +103,18 @@ document.addEventListener('DOMContentLoaded', () => {
       { label: 'Eye Strain Today',  value: state.minutesSavedToday },
       { label: 'Eye Strain Total',  value: state.minutesSavedTotal },
     ];
-    grid.innerHTML = '';
+    grid.replaceChildren();
     stats.forEach(s => {
       const cell = document.createElement('div');
       cell.className = 'stat-cell';
-      cell.innerHTML = '<div class="stat-big">' + (s.value || 0).toLocaleString() + '</div>'
-                     + '<div class="stat-lbl">' + s.label + '</div>';
+      const big = document.createElement('div');
+      big.className = 'stat-big';
+      big.textContent = (s.value || 0).toLocaleString();
+      const lbl = document.createElement('div');
+      lbl.className = 'stat-lbl';
+      lbl.textContent = s.label;
+      cell.appendChild(big);
+      cell.appendChild(lbl);
       grid.appendChild(cell);
     });
   });
