@@ -1,38 +1,16 @@
 // LoveSpark Dark Mode — popup.js
 'use strict';
 
-// Theme dropdown
-const THEMES = ['retro', 'dark', 'beige', 'slate'];
-const THEME_NAMES = { retro: 'Retro Pink', dark: 'Dark', beige: 'Beige', slate: 'Slate' };
-function applyTheme(t) {
-  THEMES.forEach(n => document.body.classList.remove('theme-' + n));
-  document.body.classList.add('theme-' + t);
-  const label = document.getElementById('themeLabel');
-  if (label) label.textContent = THEME_NAMES[t] || t;
-  document.querySelectorAll('.theme-option').forEach(opt => {
-    opt.classList.toggle('active', opt.dataset.theme === t);
-  });
-}
-(function initThemeDropdown() {
-  const toggle = document.getElementById('themeToggle');
-  const menu = document.getElementById('themeMenu');
-  if (toggle && menu) {
-    toggle.addEventListener('click', (e) => { e.stopPropagation(); menu.classList.toggle('open'); });
-    menu.addEventListener('click', (e) => {
-      const opt = e.target.closest('.theme-option');
-      if (!opt) return;
-      const theme = opt.dataset.theme;
-      applyTheme(theme);
-      chrome.storage.local.set({ theme });
-      menu.classList.remove('open');
-    });
-    document.addEventListener('click', () => menu.classList.remove('open'));
+// Theme dropdown — shared lib (lib/lovespark-theme.js). One-time migration
+// of the legacy 'darkMode' flag (pre-theme-system installs) to 'theme' before
+// the shared dropdown reads storage.
+chrome.storage.local.get(['theme', 'darkMode'], ({ theme, darkMode }) => {
+  if (!theme && darkMode) {
+    chrome.storage.local.set({ theme: 'dark' }, () => LoveSparkTheme.init());
+  } else {
+    LoveSparkTheme.init();
   }
-  chrome.storage.local.get(['theme', 'darkMode'], ({ theme, darkMode }) => {
-    if (!theme && darkMode) theme = 'dark';
-    applyTheme(theme || 'retro');
-  });
-})();
+});
 
 const pills      = document.querySelectorAll('.mode-pill');
 const toggle     = document.getElementById('toggle-enabled');
@@ -99,7 +77,7 @@ function setSiteDisabled(disabled) {
 chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
   const tab = tabs[0];
   if (tab?.url) {
-    try { currentHostname = new URL(tab.url).hostname; } catch (_) {}
+    try { currentHostname = new URL(tab.url).hostname; } catch (err) { console.warn('[lovespark-dark-mode] unknown:', err); }
   }
 
   chrome.runtime.sendMessage({ action: 'getState' }, (state) => {

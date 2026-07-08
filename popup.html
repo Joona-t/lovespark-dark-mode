@@ -4,20 +4,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="lib/lovespark-fonts.css">
+  <link rel="stylesheet" href="lib/lovespark-base.css">
   <link rel="stylesheet" href="popup.css">
   <link rel="stylesheet" href="lib/lovespark-footer.css">
   <title>LoveSpark Dark Mode</title>
 </head>
-<body>
+<body role="dialog" aria-labelledby="popupTitle" aria-describedby="popupDesc">
 
   <header class="header">
     <img src="icons/icon-48.png" alt="" class="logo" width="28" height="28">
     <div class="header-text">
-      <span class="title">LoveSpark</span>
-      <span class="subtitle">DARK MODE</span>
+      <span class="title" id="popupTitle">LoveSpark</span>
+      <span class="subtitle" id="popupDesc">DARK MODE</span>
     </div>
     <div class="theme-dropdown" id="themeDropdown">
-      <button class="theme-dropdown-trigger" id="themeToggle">
+      <button class="theme-dropdown-trigger" id="themeToggle" aria-expanded="false" aria-haspopup="true" aria-label="Change theme">
         <span id="themeLabel">Retro Pink</span> ▾
       </button>
       <div class="theme-dropdown-menu" id="themeMenu">
@@ -96,6 +97,7 @@
   </div>
 
   <script src="lib/lovespark-footer.js"></script>
+<script src="lib/lovespark-theme.js"></script>
 <script src="popup.js"></script>
 </body>
 </html>
