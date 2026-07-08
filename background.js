@@ -69,7 +69,7 @@ async function injectIntoTab(tabId, tabUrl) {
   // 2. Inject content.js (sets class on <html>, listens for messages)
   try {
     await chrome.scripting.executeScript({ target: { tabId }, files: ['content.js'] });
-  } catch (_) {}
+  } catch (err) { console.warn('[lovespark-dark-mode] unknown:', err); }
 }
 
 // ── Broadcast to all open tabs ─────────────────────────────────────────────
