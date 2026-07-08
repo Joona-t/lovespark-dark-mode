@@ -99,7 +99,7 @@ function setSiteDisabled(disabled) {
 chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
   const tab = tabs[0];
   if (tab?.url) {
-    try { currentHostname = new URL(tab.url).hostname; } catch (_) {}
+    try { currentHostname = new URL(tab.url).hostname; } catch (err) { console.warn('[lovespark-dark-mode] unknown:', err); }
   }
 
   chrome.runtime.sendMessage({ action: 'getState' }, (state) => {
