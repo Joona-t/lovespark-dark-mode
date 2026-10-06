@@ -12,6 +12,18 @@ chrome.storage.local.get(['theme', 'darkMode'], ({ theme, darkMode }) => {
   }
 });
 
+// BUG-002: lib/lovespark-theme.js toggles the menu's .open class but never
+// updates ARIA, so the static aria-expanded="false" on the trigger would lie
+// to screen readers once the menu opens. Mirror the class into the attribute.
+(function syncThemeAriaExpanded() {
+  const trigger = document.getElementById('themeToggle');
+  const menu = document.getElementById('themeMenu');
+  if (!trigger || !menu) return;
+  const sync = () => trigger.setAttribute('aria-expanded', String(menu.classList.contains('open')));
+  new MutationObserver(sync).observe(menu, { attributes: true, attributeFilter: ['class'] });
+  sync();
+})();
+
 const pills      = document.querySelectorAll('.mode-pill');
 const toggle     = document.getElementById('toggle-enabled');
 const statusText = document.getElementById('status-text');
